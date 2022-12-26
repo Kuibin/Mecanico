@@ -1,0 +1,318 @@
+
+    <div>
+        <datalist id="entidadesList">
+            <option value="Piezas"></option>
+            <option value="Cotizacion"></option>
+            <option value="Servicio"></option>
+            <option value="Cliente"></option>
+            <option value="Carro"></option>
+            <option value="Marca de Pieza"></option>
+            <option value="Marca de Auto"></option>
+        </datalist>
+
+        <datalist id="serviciosList">
+            <option value="servicio mayor"></option>    
+            <option value="cambio de aceite"></option>
+            <option value="diagnostico"></option>
+            <option value="frenos"></option>
+            <option value="suspension"></option>
+            <option value="direccion"></option>
+        </datalist>
+
+        <datalist id="servicio mayor">
+            <option value="fitlros de aire"></option>
+            <option value="filtro gasolina"></option>
+            <option value="filtro de aceite"></option>
+            <option value="bujias"></option>
+            <option value="liquido de inyectores"></option>
+            <option value="limpidor de cuarpo de aceleracion"></option>
+            <option value="aceite"></option>
+        </datalist>
+
+        <datalist id="cambio de aceite">
+            <option value="filtro de aceite"></option>
+            <option value="aceite"></option>
+        </datalist>
+
+        <datalist id="suspension piezas">
+            <option value="amortiguadores"></option>
+            <option value="bujes"></option>
+            <option value="rotulas"></option>
+            <option value="tornilo de barra estabilizadora"></option>
+            <option value="base de amortiguador"></option>
+        </datalist>
+
+        <datalist id="direccion">
+            <option value="vieletas"></option>
+            <option value="terminales"></option>
+            <option value="cremallera"></option>
+            <option value="columna"></option>
+            <option value="volante"></option>
+        </datalist>
+
+        <datalist id="extras">
+            <option value="revision de sistema de enfriamiento"></option>
+            <option value="revision de sistema de carga bateria"></option>
+            <option value="revision de sistema de banda y poleas"></option>
+            <option value="revision de sistema de luces y limpiaparabrisas"></option>
+            <option value="escaneo por computadora"></option>
+            <option value="rellenado de niveles"></option>
+            <option value="calibracion de llantas"></option>
+            <option value="revision de liquidos"></option>
+        </datalist>
+
+        <form [formGroup]="checkoutForm">
+            <div >
+              <div >
+                <label for="entidades">Entidades</label>
+                <input type="search" list="entidadesList" id="entidades" #entidades style="text-transform:uppercase;"
+                formControlName="entidades" (change)="entidadesSel(entidades.value)">
+            </div>
+<br>
+<!-- #region Servicios -->
+                <div *ngIf="entidadesActivo == 'Servicio'">
+                  <!-- Ocultar a nivel estilos -->
+          <!-- <div [style.visibility]="(campoActivo == 'Servicio') ? 'visible':'hidden' "> -->
+                <label for="servicios">Servicios</label>
+                <input type="search" list="serviciosList" id="servicios" name="servicios" style="text-transform:uppercase;"
+                formControlName="servicios" (change)="servicioSel()">
+            
+<br>
+<br>
+            <div *ngIf="servicioActivo == 'servicio mayor'">
+                <label for="serviciosmayor">Servicio Mayor</label>
+                <input type="search" list="servicio mayor" id="serviciosmayor" name="serviciosmayor" style="text-transform:uppercase;">
+            </div>
+<br>
+            <div *ngIf="servicioActivo == 'cambio de aceite'">
+                <label for="cambio de aceite">cambio de aceite</label>
+                <input type="search" list="cambio de aceite" id="cambio de aceite" name="cambio de aceite" style="text-transform:uppercase;">
+            </div>
+            <br>
+            <div *ngIf="servicioActivo == 'frenos'">
+                <label for="frenos">frenos</label>
+                <input type="search" list="frenos" id="frenos" name="frenos" style="text-transform:uppercase;" value="baltas" readonly>
+            </div>
+            <br>
+            <div *ngIf="servicioActivo == 'suspension'">
+                <label for="suspension piezas">suspension piezas</label>
+                <input type="search" list="suspension piezas" id="suspension piezas" name="suspension piezas" style="text-transform:uppercase;">
+            </div>
+            <br>
+            <div *ngIf="servicioActivo == 'direccion'">
+                <label for="direccion">direccion</label>
+                <input type="search" list="direccion" id="direccion" name="direccion" style="text-transform:uppercase;">
+            </div>
+            <br>
+
+          </div>
+<!-- #endregion -->
+            <br>
+            <hr>
+            <div class="contentextras">
+                <label for="extras">extras</label>
+                <input type="search" list="extras" id="extras" name="extras" style="text-transform:uppercase;">
+            </div>
+            <br>
+            <div class="contentextras 2">
+                <label for="extras 2">extras 2</label>
+                <input type="search" list="extras 2" id="extras 2" name="extras 2" style="text-transform:uppercase;" value="aspirada y lavada de motor" readonly>
+            </div>
+            <br>
+            <div >
+                <h3>usuarios</h3>
+                <div>
+                    <label for="id usuario">id usuario</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id usuario" name="id usuario" placeholder="id usuario" >
+                  </div>
+                  <div>
+                    <label for="nombre">Nombre</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="nombre" name="nombre" placeholder="Nombre" >
+                  </div>
+                  <div>
+                    <label for="apellido">apellido</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="apellido" name="apellido" placeholder="apellido" >
+                  </div>
+                  <div>
+                    <label for="correo electronico">correo electronico</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="email"  id="correo electronico" name="correo electronico" placeholder="correo electronico" >
+                  </div>
+                  <div>
+                    <label for="RFC">RFC</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="RFC" name="RFC" placeholder="RFC" >
+                  </div><div>
+                    <label for="razon social">razon social</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="razon social" name="razon social" placeholder="razon social" >
+                  </div>
+            </div>
+
+            <div >
+                <h3>carro usuario</h3>
+                <div>
+                    <label for="id marca">id marca</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id marca" name="id marca" placeholder="id marca" >
+                  </div>
+                  <div>
+                    <label for="id modelo">id modelo</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id modelo" name="id modelo" placeholder="id modelo" >
+                  </div>
+                  <div>
+                    <label for="año">año</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="año" name="año" placeholder="año" >
+                  </div>
+                  <div>
+                    <label for="km actual">km actual</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="km actual" name="km actual" placeholder="km actual" >
+                  </div>
+                  <div>
+                    <label for="id usuario">id usuario</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id usuario" name="id usuario" placeholder="id usuario" >
+                  </div>
+                  <div>
+                    <label for="tipo de motor">tipo de motor</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="tipo de motor" name="tipo de motor" placeholder="tipo de motor" >
+                  </div>
+                  <div>
+                    <label for="cilindraje">cilindraje</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="cilindraje" name="cilindraje" placeholder="cilindraje" >
+                  </div>
+                  <div>
+                    <label for="placa">placa</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="placa" name="placa" placeholder="placa" >
+                  </div>
+
+            </div>
+
+            <div >
+                <h3>pieza</h3>
+                  <div>
+                    <label for="nombre de la pieza">nombre de la pieza</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="nombre de la pieza" name="nombre de la pieza" placeholder="nombre de la pieza" >
+                  </div>
+                  <div>
+                    <label for="id marca">id marca</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id marca" name="id marca" placeholder="id marca" >
+                  </div>
+                  <div>
+                    <label for="id del sistema">id del sistema</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id del sistema" name="id del sistema" placeholder="id del sistema" >
+                  </div>
+                  <div>
+                    <label for="tipo de motor">tipo de motor</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="tipo de motor" name="tipo de motor" placeholder="tipo de motor" >
+                  </div>
+                  <div>
+                    <label for="cilindraje">cilindraje</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="cilindraje" name="cilindraje" placeholder="cilindraje" >
+                  </div>
+                  <div>
+                    <label for="año del carro">año del carro</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="año del carro" name="año del carro" placeholder="año del carro" >
+                  </div>
+                  <div>
+                    <label for="precio de la pieza">precio de la pieza</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="precio de la pieza" name="precio de la pieza" placeholder="precio de la pieza" >
+                  </div>
+                  <div>
+                    <label for="FECHA DE GARANTIA">FECHA DE GARANTIA</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="FECHA DE GARANTIA" name="FECHA DE GARANTIA" placeholder="FECHA DE GARANTIA" >
+                  </div>
+            </div>
+
+            <div >
+                <h3>marcas</h3>
+                  <div>
+                    <label for="id de marca">id de marca</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id de marca" name="id de marca" placeholder="id de marca" >
+                  </div>
+                  <div>
+                    <label for="nombre de marca">nombre de marca</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="nombre de marca" name="nombre de marca" placeholder="nombre de marca" >
+                  </div>
+                  <div>
+                    <label for="tipo de marca /si es de pieza o de auto/">tipo de marca /si es de pieza o de auto/</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="tipo de marca /si es de pieza o de auto/" name="tipo de marca /si es de pieza o de auto/" placeholder="tipo de marca /si es de pieza o de auto/" >
+                  </div>
+            </div>
+
+            <div >
+                <h3>modelo /de auto/</h3>
+                  <div>
+                    <label for="id modelo">id modelo</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id modelo" name="id modelo" placeholder="id modelo" >
+                  </div>
+                  <div>
+                    <label for="id marca">id marca</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id marca" name="id marca" placeholder="id marca" >
+                  </div>
+                  <div>
+                    <label for="nombre del modelo">nombre del modelo</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="nombre del modelo" name="nombre del modelo" placeholder="nombre del modelo" >
+                  </div>
+            </div>
+
+            <div >
+                <h3>sistemas de carro</h3>
+                  <div>
+                    <label for="id del sistema">id del sistema</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id del sistema" name="id del sistema" placeholder="id del sistema" >
+                  </div>
+                  <div>
+                    <label for="nombre del sistema">nombre del sistema</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="nombre del sistema" name="nombre del sistema" placeholder="nombre del sistema" >
+                  </div>
+            </div>
+
+            <div >
+                <h3>servicios</h3>
+                  <div>
+                    <label for="id del servicio">id del servicio</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id del servicio" name="id del servicio" placeholder="id del servicio" >
+                  </div>
+                  <div>
+                    <label for="id del sistema">id del sistema</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="id del sistema" name="id del sistema" placeholder="id del sistema" >
+                  </div>
+                  <div>
+                    <label for="nombre del servicio">nombre del servicio</label>
+                    <input style="text-transform:uppercase;" value=""
+                    type="text"  id="nombre del servicio" name="nombre del servicio" placeholder="nombre del servicio" >
+                  </div>
+            </div>
+
+          </div>
+        </form>
+    </div>
+    
